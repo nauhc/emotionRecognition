@@ -41,8 +41,11 @@ if exist(file)
                 bodybox = regionprops(bw, 'BoundingBox');
                 Iroi = imcrop(I, bodybox.BoundingBox);
                 %imshow(I), figure, imshow(imresize(bodyparts, [Isize(1) Isize(2)]))
-                imshow(I), figure, imshow(Iroi)
+                %imshow(I), figure, imshow(Iroi)
                 
+                patch = imresize(Iroi, [128 128]);
+                imshow(patch)
+                features = extractHOGFeatures(patch)
                 
             end
         end
